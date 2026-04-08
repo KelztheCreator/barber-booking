@@ -4,6 +4,7 @@
 
 import { supabase } from "@/lib/supabase";
 import BarberHeader from "@/components/barber-header";
+import BookingSection from "@/components/booking-section";
 
 export default async function Home() {
   const { data: barber } = await supabase
@@ -23,15 +24,21 @@ export default async function Home() {
   }
 
   return (
-    <main className="mx-auto w-full max-w-md px-4 py-8">
-      <BarberHeader
-        name={barber.name}
-        shopName={barber.shop_name}
-        photoUrl={barber.photo_url}
-      />
-      <p className="text-center text-sm text-gray-400">
-        Slot selection coming next.
-      </p>
+    <main className="mx-auto w-full max-w-md px-4 py-6">
+      <div className="rounded-2xl bg-white shadow-sm">
+        <BarberHeader
+          name={barber.name}
+          shopName={barber.shop_name}
+          photoUrl={barber.photo_url}
+        />
+        <div className="mx-6 border-t border-gray-100" />
+        <div className="px-6 pb-8 pt-6">
+          <BookingSection
+            barberId={barber.id}
+            homeServiceFee={barber.home_service_fee}
+          />
+        </div>
+      </div>
     </main>
   );
 }
