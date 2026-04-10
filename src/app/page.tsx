@@ -6,6 +6,11 @@ import { supabase } from "@/lib/supabase";
 import BarberHeader from "@/components/barber-header";
 import BookingSection from "@/components/booking-section";
 
+// Tell Next.js to fetch fresh data on every request instead of serving a cached copy.
+// This is the right choice for a booking app — slot availability and barber info
+// must always be up to date, even if it's slightly slower than a cached page.
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   const { data: barber } = await supabase
     .from("barbers")
