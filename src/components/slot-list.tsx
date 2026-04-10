@@ -54,7 +54,7 @@ export default function SlotList({ slots, selectedSlotId, onSelect, mode, homeSe
         </span>
         {mode === "home" && (
           <span className="text-xs text-gray-500">
-            ₦{homeServiceFee.toLocaleString()} (transport may vary)
+            ₦{homeServiceFee.toLocaleString()} (price is negotiable)
           </span>
         )}
       </div>
